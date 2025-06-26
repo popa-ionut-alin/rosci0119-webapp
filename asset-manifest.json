@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/rosci0119-webapp/static/css/main.d082079b.css",
+    "main.js": "/rosci0119-webapp/static/js/main.a2cb8f28.js",
+    "index.html": "/rosci0119-webapp/index.html",
+    "main.d082079b.css.map": "/rosci0119-webapp/static/css/main.d082079b.css.map",
+    "main.a2cb8f28.js.map": "/rosci0119-webapp/static/js/main.a2cb8f28.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d082079b.css",
+    "static/js/main.a2cb8f28.js"
+  ]
+}
