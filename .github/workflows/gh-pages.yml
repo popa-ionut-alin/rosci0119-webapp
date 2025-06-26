@@ -1,5 +1,10 @@
 name: Deploy to GitHub Pages
 
+# give the token rights to push contents and pages
+permissions:
+  contents: write
+  pages: write
+
 on:
   push:
     branches:
@@ -9,29 +14,26 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      # 1. Check out your code **with credentials** so the token is available
+      # 1. Checkout your code with the token persisted
       - uses: actions/checkout@v4
         with:
-          persist-credentials: true    # <— ensure the checkout action leaves GitHub token in origin
+          persist-credentials: true    # leaves GITHUB_TOKEN credentials in git remote
 
       # 2. Set up Node.js
       - uses: actions/setup-node@v4
         with:
           node-version: '18'
 
-      # 3. Install and build
+      # 3. Install deps & build
       - run: npm ci
       - run: npm run build
 
       # 4. Deploy to gh-pages
       - uses: peaceiris/actions-gh-pages@v4
         with:
-          # Use the automatically provided GITHUB_TOKEN
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build
           publish_branch: gh-pages
-          # Set commit author info (these are the correct input names):
           user_name:    github-actions[bot]
           user_email:   github-actions[bot]@users.noreply.github.com
-          # Optional: a custom commit message
           commit_message: "📦 auto-deploy from main"
