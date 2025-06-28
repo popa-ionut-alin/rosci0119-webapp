@@ -99,7 +99,7 @@ function HabitatPage() {
       return;
     }
 
-    fetch(habitatGeoJsonFiles[selectedHabitat])
+    fetch(`${process.env.PUBLIC_URL}${habitatGeoJsonFiles[selectedHabitat]}`)
       .then((res) => res.json())
       .then((data) => setGeoData(data))
       .catch((err) => {
@@ -258,7 +258,7 @@ function EcoEducationPage() {
       setRouteBounds(null);
       return;
     }
-    fetch(traseeGeoJsonFiles[selectedRoute])
+    fetch(`${process.env.PUBLIC_URL}${traseeGeoJsonFiles[selectedRoute]}`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data); 
